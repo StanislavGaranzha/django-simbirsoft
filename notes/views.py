@@ -13,7 +13,7 @@ CustomUser = get_user_model()
 def page_not_found(request, exception):
     return render(
         request,
-        'errs/404.html',
+        '404.html',
         {'path': request.path},
         status=404
     )

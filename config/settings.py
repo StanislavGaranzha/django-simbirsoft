@@ -9,7 +9,7 @@ SECRET_KEY = config(
     default='(=@)bd()5%@8efynyq@wfln4emk)5vkcq^s7p*6(i4n_ee$s7t',
 )
 
-DEBUG = config('DEBUG', default=True, cast=bool)
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('DJANGO_ALLOWED_HOSTS', default='*').split(' ')
 
