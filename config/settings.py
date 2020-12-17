@@ -1,14 +1,17 @@
+from decouple import config
+
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '$ii*=uq=d&s1=9&$cp_v^fd)+o-1l10+t)l&5%u6x!ktkz0jxu'
+SECRET_KEY = config(
+    'SECRET_KEY',
+    default='(=@)bd()5%@8efynyq@wfln4emk)5vkcq^s7p*6(i4n_ee$s7t',
+)
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config('DJANGO_ALLOWED_HOSTS', default='*').split(' ')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -17,6 +20,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # сторонние приложения
+    'bootstrap4',
 
     # локальные приложения
     'users.apps.UsersConfig',
@@ -48,7 +54,11 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'notes.context.notes_count',
             ],
+            'libraries': {
+                 'custom_filters': 'templates.templatetags.custom_filters',
+            },
         },
     },
 ]
@@ -59,11 +69,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'db',
-        'PORT': 5432,
+        'NAME': config('DB_NAME', default='postgres'),
+        'USER': config('DB_USER', default='postgres'),
+        'PASSWORD': config('DB_PASSWORD', default='postgres'),
+        'HOST': config('DB_HOST', default='db'),
+        'PORT': config('DB_PORT', default=5432, cast=int),
     }
 }
 
@@ -95,6 +105,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'users.Customuser'
+
+LOGIN_URL = 'users:login'
 
 LOGIN_REDIRECT_URL = 'home'
 

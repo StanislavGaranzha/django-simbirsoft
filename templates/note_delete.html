@@ -1,0 +1,25 @@
+{% extends 'base/base.html' %}
+
+  {% block title %}
+    Удалить - {{ block.super }}
+  {% endblock title %}
+
+  {% block content %}
+    <h2>
+      Удалить запись
+    </h2>
+
+  <form action='' method='post'>
+  {% csrf_token %}
+    <p>
+      Вы действительно хотите удалить '{{ note.text|truncatewords:10 }}'?
+    </p>
+    <button type='submit' class='btn btn-outline-danger'>
+      Да
+    </button>
+    <a class="btn btn-outline-success"
+    href='{% url 'notes:notes_list' request.user.pk %}'>
+      Нет
+    </a>
+  </form>
+  {% endblock content %}

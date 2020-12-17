@@ -1,15 +1,31 @@
-{% extends 'base.html' %}
+{% extends 'base/base.html' %}
 
 {% block title %}
-    Войти
+    Войти - {{ block.super }}
 {% endblock title %}
 
 {% block content %}
     <h2>
-        Войти
+      Войти на сайт
     </h2>
+    {% if next %}
+      <div class='alert alert-info' role='alert'>
+        Вы обратились к странице, доступ к которой возможен только для залогиненных пользователей.
+        <br>
+        Пожалуйста, авторизуйтесь.
+      </div>
+    {% else %}
+      <div class='alert alert-info' role='alert'>
+        Пожалуйста, авторизуйтесь.
+      </div>
+    {% endif %}
     <form method='post'>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type='submit'>Войти</button>
+      <input type='hidden' name='next' value='{{ next }}'>
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+      {% include 'base/form.html' %}
+      <button type='submit' class='btn btn-primary'>
+        Войти
+      </button>
+    </form>
 {% endblock content %}

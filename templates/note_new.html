@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+{% load custom_filters %}
+
+  {% block title %}
+    Новая заметка - {{ block.super }}
+  {% endblock title %}
+
+  {% block content %}
+    <h1>
+      {% if request.resolver_match.url_name == 'note_new' %}
+        Новая заметка
+      {% else %}
+        Редактировать заметку
+      {% endif %}
+    </h1>
+    
+    <form method='post'>
+    {% csrf_token %}
+    {% include 'base/form.html' %}
+    <button type='submit' class='btn btn-primary'>
+      Сохранить
+    </button>
+{% endblock content %}

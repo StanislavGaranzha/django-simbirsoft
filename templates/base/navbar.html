@@ -1,0 +1,47 @@
+  <div class="jumbotron bg-cover text-center pb-1">
+    <h1 class='display-4'>
+      Мои заметки
+    </h1>
+  <ul class='nav justify-content-center'>
+  {% if request.resolver_match.url_name != 'home' %}
+    <li class='nav-item'>
+      <a class='btn btn-primary ml-3' href='{% url 'home' %}'>
+        На главную
+      </a>
+    </li>
+  {% endif %}
+  {% if user.is_authenticated %}
+    <li class='nav-item'>
+      <a class='btn btn-primary ml-3' href='{% url 'notes:note_new' %}'>
+        Новая заметка
+      </a>
+    </li>
+    <li class='nav-item'>
+      <a class='btn btn-primary ml-3' href='{% url 'notes:notes_list' request.user.id %}'>
+        Список всех заметок
+      </a>
+    </li>
+    <li class='nav-item'>
+      <a class='btn btn-primary ml-3' href='{% url 'users:logout' %}'>
+        Выйти
+      </a>
+    </li>
+  {% else %}
+    <li class='nav-item'>
+      <a class='btn btn-primary ml-3' href='{% url 'users:signup' %}'>
+        Регистрация
+      </a>
+    </li>
+    <li class='nav-item'>
+      <a class='btn btn-primary ml-3' href='{% url 'users:login' %}'>
+        Войти
+      </a>
+    </li>
+  {% endif %}
+  </ul>
+  {% if request.user.is_authenticated %}
+    <h4 class='pt-2'>
+      Всего ваших заметок &#8212; {{ notes_count }}
+    </h4>
+  {% endif %}
+  </div>

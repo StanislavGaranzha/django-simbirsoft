@@ -1,0 +1,31 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+    403 - {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+
+  <main role="main" class="container">
+    <div class="row">
+      <div class="col-md-12">
+        
+        <h1>
+          Ошибка 403
+        </h1>
+        
+        <p class="lead">
+          Даже если очень хочется, вам сюда нельзя
+        </p>
+        
+        <p class="lead">
+          <a href="{% url "home" %}">
+            Вернуться на главную
+          </a>
+        </p>
+
+      </div>
+    </div>
+  </main>
+
+{% endblock %}

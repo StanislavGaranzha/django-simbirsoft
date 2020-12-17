@@ -1,0 +1,39 @@
+{% extends 'base/base.html' %}
+
+  {% block title %}
+    {{ block.super }}
+  {% endblock title %}
+
+{% block content %}
+  {% for note in object_list %}
+    <div class="row">
+      <div class="col">
+        <div class="card ml-sm-n3">
+          <div class="card-body pl-sm-2">
+            <small class="text-muted">
+              Создано {{ note.pub_date|date:"DATETIME_FORMAT" }}
+            </small>
+            <p>
+            {{ note.text|linebreaksbr }}
+            </p>
+            <a class="btn btn-sm text-muted" 
+              href="{% url "notes:note_edit" note.pk %}" 
+              role="button">
+                Редактировать
+              </a>
+              <a>
+              <a class="btn btn-sm text-muted" 
+              href="{% url "notes:note_delete" note.pk %}" 
+              role="button">
+                Удалить
+              </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+      <h5>
+        Записей пока нет
+      </h5>
+  {% endfor %}
+{% endblock content %}

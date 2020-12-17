@@ -1,15 +1,19 @@
-{% extends 'base.html' %}
+{% extends 'base/base.html' %}
+{% load custom_filters %}
 
 {% block title %}
-    Регистрация
+    Регистрация - {{ block.super }}
 {% endblock title %}
 
 {% block content %}
-    <h2>
-        Зарегистрироваться
-    </h2>
+    <h3>
+      Зарегистрироваться
+    </h3>
     <form method='post'>
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type='submit'>Сохранить</button>
+    {% include 'base/form.html' %}
+      <button type='submit' class='btn btn-primary'>
+        Сохранить
+      </button>
+    </form>
 {% endblock content %}

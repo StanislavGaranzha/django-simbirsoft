@@ -1,0 +1,25 @@
+{% load custom_filters %}
+
+  {% for field in form.visible_fields %}
+    <div class='form-group'>
+      <label for='{{ field.id_for_label }}'>
+        {{ field.label }}{% if field.field.required %}*{% endif %}
+      </label>
+      <br>
+      {{ field|addclass:"form-control" }}
+      {% if field.help_text and not field.errors %}
+      <small class='form-text text-muted'>
+        {{ field.help_text|safe }}
+      </small>
+      {% else %}
+        {{ field.help_text.as_hidden }}
+      {% endif %}
+
+      {% for error in field.errors %}
+        <br>
+        <small class='text-danger'>
+          {{ error|escape }}
+        </small>
+      {% endfor %}
+    </div>
+  {% endfor %}

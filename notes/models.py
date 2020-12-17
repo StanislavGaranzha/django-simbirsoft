@@ -1,12 +1,14 @@
+from users.models import CustomUser
+from django.contrib.auth import get_user_model
 from django.db import models
 
-from users.models import CustomUser
+CustomUser = get_user_model()
 
 
 class Note(models.Model):
     """
     Модель для хранения заметок пользователей.
-    Связана через fk с моделями User и Group.
+    Связана через fk с моделью CustomUser.
     """
     text = models.TextField(
         verbose_name="текст",
