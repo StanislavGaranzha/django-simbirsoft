@@ -29,6 +29,7 @@ def permission_denied(request, exception):
 
 class NoteListView(UserPassesTestMixin, ListView):
     template_name = 'notes.html'
+    paginate_by = 10
 
     def test_func(self):
         author = get_object_or_404(CustomUser, pk=self.kwargs['author_id'])
