@@ -4,10 +4,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = config(
-    'SECRET_KEY',
-    default='(=@)bd()5%@8efynyq@wfln4emk)5vkcq^s7p*6(i4n_ee$s7t',
-)
+SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
