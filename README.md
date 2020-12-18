@@ -4,18 +4,15 @@
 Приложение для создания простых текстовых заметок.
 
 Функционал для анонимных пользователей :
-1. Зарегистрироваться - `/users/signup/`
-2. Авторизоваться - `/users/login/`
+1. Зарегистрироваться &ndash; `/users/signup/`
+2. Авторизоваться &ndash; `/users/login/`
 
 Функционал для зарегистрированных пользователей:
-1. Создать новую заметку - `note/new/`
-2. Просмотреть список всех своих заметок - `author/{author_id}`
-3. Редактировать свою заметку - `note/{note_id}/edit/`
-4. Удалить свою заметку - `note/{note_id}/delete/`
-5. Выйти из текущего сеанса - `/users/logout/`
-
-
-
+1. Создать новую заметку &ndash; `note/new/`
+2. Просмотреть список всех своих заметок &ndash; `author/{author_id}/`
+3. Редактировать свою заметку &ndash; `note/{note_id}/edit/`
+4. Удалить свою заметку &ndash; `note/{note_id}/delete/`
+5. Выйти из текущего сеанса &ndash; `/users/logout/`
 ***
 #### Инструкция по деплою приложения на вашей машине
 
@@ -25,7 +22,7 @@
 `git clone https://github.com/StanislavGaranzha/django-simbirsoft`
 
 3. Перейдите в папку с клонированным репозиторием и сделайте следующее:
-- `docker-compose up --build` - собрать приложение и сделать его первоначальный запуск
-- `docker-compose down` - остановить работу приложения
-- `docker-compose run web python manage.py migrate` - сделать необходимые миграции
-- `docker-compose up` - окончательно запустить приложение.
+- `docker-compose up --build` &ndash; собрать приложение и сделать его первоначальный запуск
+- `docker-compose down` &ndash; остановить работу приложения
+- `docker-compose run web python manage.py migrate` &ndash; сделать необходимые миграции
+- `docker-compose up` &ndash; окончательно запустить приложение.
