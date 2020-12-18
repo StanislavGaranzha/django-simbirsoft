@@ -28,7 +28,7 @@
 
 `git clone https://github.com/StanislavGaranzha/django-simbirsoft`
 
-3. Перейдите в папку с клонированным репозиторием и сделайте следующее:
+3. Перейдите через CLI в папку с клонированным репозиторием и выполните следующие команды:
 - `docker-compose up --build` &ndash; собрать приложение и сделать его первоначальный запуск
 - `docker-compose down` &ndash; остановить работу приложения
 - `docker-compose run web python manage.py migrate` &ndash; сделать необходимые миграции
