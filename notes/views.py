@@ -20,11 +20,11 @@ def page_not_found(request, exception):
 
 
 def server_error(request):
-    return render(request, 'errs/500.html', status=500)
+    return render(request, '500.html', status=500)
 
 
 def permission_denied(request, exception):
-    return render(request, 'errs/403.html', status=500)
+    return render(request, '403.html', status=500)
 
 
 class NoteListView(UserPassesTestMixin, ListView):
