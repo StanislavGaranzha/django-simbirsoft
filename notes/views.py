@@ -24,7 +24,7 @@ def server_error(request):
 
 
 def permission_denied(request, exception):
-    return render(request, '403.html', status=500)
+    return render(request, '403.html', status=403)
 
 
 class NoteListView(UserPassesTestMixin, ListView):
