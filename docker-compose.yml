@@ -8,11 +8,15 @@ services:
       - .:/code
     ports:
       - 8000:8000
+    extra_hosts:
+    # на локальной машине в etc/hosts указано 127.0.0.1 bulletin-board.test
+      "bulletin-board.test:localhost"
     environment:
       - "DJANGO_SECRET_KEY=)*_s#exg*#w+#-xt=vu8b010%%a&p@4edwyj0=(nqq90b9a8*n"
       - "DJANGO_DEBUG=True"
     depends_on:
       - db
+    
   db:
     image: postgres:11.0-alpine
     volumes:
