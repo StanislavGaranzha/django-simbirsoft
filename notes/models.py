@@ -8,7 +8,7 @@ CustomUser = get_user_model()
 class Note(models.Model):
     """
     Модель для хранения заметок пользователей.
-    Связана через fk с моделью CustomUser.
+    Связана через fk с моделью CustomUser. Тестовый коммент.
     """
     text = models.TextField(
         verbose_name="текст",
